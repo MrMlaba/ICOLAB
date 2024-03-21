@@ -1,0 +1,36 @@
+{% include 'include/_Header.html' %}
+<div class="heading flash-message">
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul style="color: rgb(116, 116, 191);">
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    {% endwith %}
+</div>
+<h1 class="heading">Manage Reports at {{ current_user.camp_name }}</h1>
+<table class="form" style="font-size: 14px;">
+    <tr>
+        <th>Campus</th>
+        <th>Block</th>
+        <th>Description</th>
+        <th>Status</th>
+        <th>Actions</th>
+    </tr>
+    {% for report in report %}
+        <tr>
+            <td>{{ report.Campus }}</td>
+            <td>{{ report.block }}</td>
+            <td>{{ report.decription }}</td>
+            <td>{{ report.status }}</td>
+            <td>
+                <form method="POST" action="{{ url_for('accept_booking', booking_id=report.id) }}">
+                    <button type="submit">Attend</button>
+                </form>
+            </td>
+        </tr>
+    {% endfor %}
+</table>
+{% include 'include/_Footer.html' %}

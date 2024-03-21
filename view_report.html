@@ -1,0 +1,72 @@
+{% include 'include/_Header.html' %}
+<div class="heading flash-message">
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul style="color: rgb(116, 116, 191);">
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    {% endwith %}
+</div>
+<h1 class="heading">{{ current_user.username }}'s Reports</h1>
+    <table class="form" style="font-size: 14px;">
+        <tr style="font-size: 14px;">
+            {% if current_user.role == 'Student' %}
+                <th>Campus</th>
+    
+                
+                <th>Block</th>
+    
+                
+                <th>Description</th>
+    
+                
+                <th>Status</th>
+        
+                
+            
+            {% endif %}
+        </tr>
+        {% for report in report %}
+           {% if current_user.is_authenticated %}
+               {% if current_user.role == 'Student' %}
+    
+                    <tr style="font-size: 14px;">    
+                    <td>{{ report.Campus }}</td>
+    
+                    <td>{{ report.block }}</td>
+    
+                    <td>{{ report.decription }}</td>
+    
+                    <td>{{ report.status }}</td>
+                    
+                </tr>
+            {% else %}
+                <tr class="clickable-row" style="font-size: 12px;" data-href="{{ url_for('view_report', report_id=report.id) }}">
+                    <td>{{ report.Campus }}</td>
+    
+                    <td>{{ report.block}}</td>
+    
+                    <td>{{ report.decription }}</td>
+    
+                    <td>{{ report.status }}</td>
+    
+                    
+                </tr>
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+    </table>
+
+    <script>
+        // JavaScript to extract the report ID from the URL and display it on the page
+        window.onload = function() {
+            var reportId = window.location.pathname.split('/').pop();
+            document.getElementById('report_id').innerText = reportId;
+        };
+    </script>
+</body>
+</html>
+{% include 'include/_Footer.html' %}

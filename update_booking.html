@@ -1,0 +1,109 @@
+{% include 'include/_Header.html' %}
+<h1 class="heading">Update Reports for {{ current_user.username }}</h1>
+<div class="form">
+    <form method="POST">
+        <label for="block">Select Campus Block:</label>
+        <select name="block" required>
+        {% if current_user.camp_name == 'Steve Biko Campus' %}
+            <option value="block A1">A1</option>
+            <option value="block A2">A2</option>
+            <option value="block A3">A3</option>
+            <option value="block A4">A4</option>
+            <option value="block A5">A5</option>
+            <option value="block C">C</option>
+            <option value="block D1">D1</option>
+            <option value="block D2">D2</option>
+            <option value="block D3">D3</option>
+            <option value="block D4">D4</option>
+            <option value="block D5">D5</option>
+            <option value="block D6">D6</option>
+            <option value="block E">E</option>
+            <option value="block F1">F1</option>
+            <option value="block G1">G1</option>
+            <option value="block G2">G2</option>
+            <option value="block H">H</option>
+            <option value="block J">J</option>
+            <option value="block K">K</option>
+            <option value="block M">M</option>
+            <option value="block N">N</option>
+            <option value="block P">P</option>
+            <option value="block Q">Q</option>
+            <option value="block S2">S2</option>
+            <option value="block S3">S3</option>
+            <option value="block S4">S4</option>
+            <option value="block S5">S5</option>
+            <option value="block S6">S6</option>
+            <option value="block S7">S7</option>
+            <option value="block S8">S8</option>
+            <option value="block S9">S9</option>
+            <option value="block S10">S10</option>
+            <option value="block S11">S11</option>
+
+        {% elif current_user.camp_name == 'Ritson Campus' %}
+            <option value="block A">A</option>
+            <option value="block B">B</option>
+            <option value="block C1">C1</option>
+            <option value="block C3">C3</option>
+            <option value="block D1">D1</option>
+            <option value="block D2">D2</option>
+            <option value="block D3">D3</option>
+            <option value="block E1">E1</option>
+            <option value="block E2">E2</option>
+            <option value="block F">F</option>
+            <option value="block G1">G1</option>
+            <option value="block G2">G2</option>
+            <option value="block H1">H1</option>
+            <option value="block H2">H2</option>
+            <option value="block J">J</option>
+            <option value="block K">K</option>
+            <option value="block L">L</option>
+            <option value="block M">M</option>
+            <option value="block N">N</option>
+            <option value="block P">P</option>
+            <option value="block Q">Q</option>
+            <option value="block R">R</option>
+            
+        {% elif current_user.camp_name == 'ML Sultan Campus' %}
+            <option value="block A">A</option>
+            <option value="block B">B</option>
+            <option value="block C">C</option>
+            <option value="block D">D</option>
+            <option value="block E">E</option>
+            <option value="block F">F</option>
+            <option value="block G">G</option>
+            <option value="block H">H</option>
+            <option value="block J">J</option>
+            <option value="block K">K</option>
+            <option value="block L">L</option>
+            <option value="block M">M</option>
+                
+        {% elif current_user.camp_name == 'City Campus' %}
+            <option value="block A">A</option>
+            <option value="block B">B</option>
+            <option value="block C">C</option>
+            <option value="block D">D</option>
+            <option value="block E">E</option>
+            <option value="block F">F</option>
+            <option value="block G">G</option>
+            <option value="block H">H</option>
+            
+        {% elif current_user.camp_name == 'Indumiso Campus' %}
+            <option value="block 1">Indumiso Campus</option>
+            
+        {% elif current_user.camp_name == 'Midlands Campus' %}
+            <option value="block 1">Midlands Campus</option>
+            
+        {% elif current_user.camp_name == 'Brickfield Campus' %}
+            <option value="block 1">Brickfield Campus</option>
+            
+        
+        {% endif %}
+    </select><br><br>
+    
+        <label for="description">Describe the problem:</label>
+        <textarea id="description" name="description"  rows="4" cols="50" required></textarea><br><br>
+
+    
+        <input type="submit" value="Update Report">
+    </form>
+</div>

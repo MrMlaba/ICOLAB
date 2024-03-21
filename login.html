@@ -1,0 +1,26 @@
+{% include 'include/_Header.html' %}
+<div class="heading flash-message">
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul style="color: rgb(116, 116, 191);">
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+</div>
+<h1 class="heading">Welcome</h1>
+<div class="form" style="margin-top: 40px;">
+    <form method="POST">
+        <label for="username">Username:</label><br>
+        <input type="text" name="username" id="username" required><br><br>
+        
+        <label for="password">Password:</label><br>
+        <input type="password" name="password" id="password" required><br><br>
+        
+        <input type="submit" value="Login">
+    </form> <br>
+    <div class="no__account">Don't have account? <a href="{{ url_for('register') }}">register here</a></div>
+</div>
+{% include 'include/_Footer.html' %}

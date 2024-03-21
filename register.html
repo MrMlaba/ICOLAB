@@ -1,0 +1,44 @@
+{% include 'include/_Header.html' %}
+<div class="heading flash-message">
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul style="color: rgb(116, 116, 191);">
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+</div>
+<h1 class="heading">Registration Page</h1>
+<div class="form" style="margin-top: 110px;">
+    <form method="POST">
+        <label for="username">Username:</label>
+        <input type="text" name="username" required><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" name="email" required><br><br>
+
+        
+        <label for="password">Password:</label>
+        <input type="password" name="password" required><br><br>
+        
+        <label for="role">Role:</label><br>
+        <select name="role">
+            <option value="Student">Student</option>
+            <option value="Admin">Admin</option>
+        </select><br><br>
+        <label for="camp_name">Campus:</label><br>
+                <select name="camp_name" required>
+                    {% for camp_name in campus_choices %}
+                        <option value="{{ camp_name }}">{{ camp_name }}</option>
+                    {% endfor %}
+                </select><br><br>
+        
+        
+        <input type="submit" value="Register">
+    </form>
+</div>
+{% include 'include/_Footer.html' %}
+
+
